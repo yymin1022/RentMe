@@ -4,14 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -40,7 +44,9 @@ public class SplashActivity extends AppCompatActivity {
     SignInButton btnLoginGoogle;
     GoogleSignInOptions googleSignInOptions;
     FrameLayout layoutNotLogined;
+    ImageView imageLogo;
     LinearLayout layoutLogined;
+    LinearLayout layoutNotLoginedButton;
     SharedPreferences prefs;
     SharedPreferences.Editor ed;
 
@@ -51,8 +57,10 @@ public class SplashActivity extends AppCompatActivity {
 
         btnLoginFacebook = findViewById(R.id.btn_splash_login_facebook);
         btnLoginGoogle = findViewById(R.id.btn_splash_login_google);
+        imageLogo = findViewById(R.id.image_splash_logo);
         layoutLogined = findViewById(R.id.layout_splash_logined);
         layoutNotLogined = findViewById(R.id.layout_splash_notlogined);
+        layoutNotLoginedButton = findViewById(R.id.layout_splash_notlogined_btn);
 
         prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         ed = prefs.edit();
@@ -72,6 +80,14 @@ public class SplashActivity extends AppCompatActivity {
         }else{
             layoutLogined.setVisibility(View.INVISIBLE);
             layoutNotLogined.setVisibility(View.VISIBLE);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    imageLogo.animate().translationY(-1*imageLogo.getHeight()/5).setDuration(1000).start();
+                    layoutNotLoginedButton.animate().translationY(layoutNotLoginedButton.getHeight()*4/5).alpha(1f).setDuration(1000).start();
+                }
+            }, 1500);
 
             View.OnClickListener btnClickListener = new View.OnClickListener() {
                 @Override

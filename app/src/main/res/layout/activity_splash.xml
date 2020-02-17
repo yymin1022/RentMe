@@ -2,7 +2,8 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,20 +24,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        android:background="@drawable/bg_splash"
         android:id="@+id/layout_splash_notlogined">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/logo_banner" />
+            android:src="@drawable/logo_banner"
+            android:id="@+id/image_splash_logo"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
+            android:alpha="0"
             android:id="@+id/layout_splash_notlogined_btn">
 
             <com.google.android.gms.common.SignInButton
