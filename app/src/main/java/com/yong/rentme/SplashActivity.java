@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -38,8 +39,8 @@ public class SplashActivity extends AppCompatActivity {
     Button btnLoginFacebook;
     SignInButton btnLoginGoogle;
     GoogleSignInOptions googleSignInOptions;
+    FrameLayout layoutNotLogined;
     LinearLayout layoutLogined;
-    LinearLayout layoutNotLogined;
     SharedPreferences prefs;
     SharedPreferences.Editor ed;
 
