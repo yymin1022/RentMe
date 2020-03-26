@@ -1,6 +1,8 @@
 package com.yong.rentme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogout;
     SharedPreferences prefs;
     SharedPreferences.Editor ed;
+    Toolbar mainToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnLogout = findViewById(R.id.main_btn_logout);
+        mainToolbar = findViewById(R.id.main_toolbar);
+
+        setSupportActionBar(mainToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         ed = prefs.edit();
 
